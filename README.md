@@ -83,4 +83,4 @@ vercel
 
 ## Repository
 
-- **GitHub:** https://github.com/Mushfiq-Azam/movie-explorer
+- **Email:** mushfiq.azam7860@gmail.com
