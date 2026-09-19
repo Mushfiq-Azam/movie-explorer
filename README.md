@@ -81,6 +81,6 @@ npm install -g vercel
 vercel
 ```
 
-## Repository
+## Contact
 
 - **Email:** mushfiq.azam7860@gmail.com
