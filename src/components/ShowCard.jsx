@@ -1,4 +1,4 @@
-function ShowCard({ show }) {
+function ShowCard({ show, onSelect }) {
   const title = show.name || 'Untitled'
   const image = show.image?.medium
   const year = show.premiered ? show.premiered.slice(0, 4) : null
@@ -19,7 +19,7 @@ function ShowCard({ show }) {
         <h2 className="show-card-title">{title}</h2>
         {year && <p className="show-card-meta">{year}</p>}
         {rating && <p className="show-card-meta">Rating: {rating.toFixed(1)}</p>}
-        <button type="button" className="btn btn-primary show-card-button">
+        <button type="button" className="btn btn-primary show-card-button" onClick={() => onSelect(show)}>
           See Details
         </button>
       </div>

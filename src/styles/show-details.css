@@ -1,0 +1,165 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  animation: modal-in 0.25s ease;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: sticky;
+  top: 1rem;
+  float: right;
+  z-index: 1;
+  margin: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text);
+  background-color: var(--color-surface-light);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.modal-close:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.modal-status {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.modal-status .btn {
+  margin-top: 1rem;
+}
+
+.modal-layout {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.modal-poster {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--color-surface-light);
+}
+
+.modal-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-poster-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 3;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: linear-gradient(160deg, var(--color-surface-light), var(--color-bg));
+}
+
+.modal-content {
+  min-width: 0;
+}
+
+.modal-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  padding-right: 3rem;
+}
+
+.modal-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
+}
+
+.modal-meta-item {
+  min-width: 0;
+}
+
+.modal-meta-item dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.modal-meta-item dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.modal-meta-genres {
+  grid-column: 1 / -1;
+}
+
+.modal-summary {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.85);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .modal-backdrop {
+    padding: 0.75rem;
+  }
+
+  .modal-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 1.25rem 1.5rem;
+  }
+
+  .modal-poster img {
+    aspect-ratio: 2 / 3;
+  }
+
+  .modal-title {
+    padding-right: 0;
+  }
+}

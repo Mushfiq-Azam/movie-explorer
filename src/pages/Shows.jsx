@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchShows, searchShows } from '../services/tvmaze.js'
 import ShowCard from '../components/ShowCard.jsx'
+import ShowDetailsModal from '../components/ShowDetailsModal.jsx'
 import '../styles/shows.css'
 
 function Shows() {
@@ -8,6 +9,7 @@ function Shows() {
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState('loading')
   const [reloadKey, setReloadKey] = useState(0)
+  const [selectedShow, setSelectedShow] = useState(null)
 
   useEffect(() => {
     let active = true
@@ -95,9 +97,13 @@ function Shows() {
       {status === 'ready' && !isEmpty && (
         <div className="shows-grid">
           {shows.map((show) => (
-            <ShowCard key={show.id} show={show} />
+            <ShowCard key={show.id} show={show} onSelect={setSelectedShow} />
           ))}
         </div>
+      )}
+
+      {selectedShow && (
+        <ShowDetailsModal show={selectedShow} onClose={() => setSelectedShow(null)} />
       )}
     </section>
   )

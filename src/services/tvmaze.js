@@ -1,6 +1,6 @@
 export const TVMAZE_API_URL = 'https://api.tvmaze.com'
 
-async function request(path) {
+async function requestJson(path) {
   let response
 
   try {
@@ -20,18 +20,27 @@ async function request(path) {
     throw new Error('TVMaze returned an invalid response.')
   }
 
+  return data
+}
+
+function expectArray(data) {
   if (!Array.isArray(data)) {
     throw new Error('TVMaze returned an unexpected response.')
   }
-
   return data
 }
 
 export async function fetchShows() {
-  return request('/shows')
+  return expectArray(await requestJson('/shows'))
 }
 
 export async function searchShows(query) {
-  const results = await request(`/search/shows?q=${encodeURIComponent(query)}`)
+  const results = expectArray(
+    await requestJson(`/search/shows?q=${encodeURIComponent(query)}`),
+  )
   return results.map((result) => result.show)
+}
+
+export async function fetchShowDetails(id) {
+  return requestJson(`/shows/${id}`)
 }
