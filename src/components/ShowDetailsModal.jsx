@@ -142,7 +142,11 @@ function ShowDetailsModal({ show, onClose }) {
           ×
         </button>
 
-        {status === 'loading' && <p className="modal-status">Loading details…</p>}
+        {status === 'loading' && (
+          <p className="modal-status" role="status">
+            Loading details…
+          </p>
+        )}
 
         {status === 'error' && (
           <div className="modal-status">

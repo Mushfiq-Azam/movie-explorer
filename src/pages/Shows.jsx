@@ -72,7 +72,11 @@ function Shows() {
         )}
       </form>
 
-      {status === 'loading' && <p className="shows-status">Loading shows…</p>}
+      {status === 'loading' && (
+        <p className="shows-status" role="status">
+          Loading shows…
+        </p>
+      )}
 
       {status === 'error' && (
         <div className="shows-status">

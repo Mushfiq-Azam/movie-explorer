@@ -15,7 +15,9 @@
   width: 100%;
   max-width: 720px;
   max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 10px;
@@ -39,8 +41,8 @@
   float: right;
   z-index: 1;
   margin: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   font-size: 1.5rem;
   line-height: 1;
   color: var(--color-text);
@@ -74,6 +76,8 @@
 }
 
 .modal-poster {
+  align-self: start;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
   border-radius: 8px;
   background-color: var(--color-surface-light);
@@ -131,6 +135,7 @@
   margin: 0.15rem 0 0;
   font-size: 0.95rem;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .modal-meta-genres {
@@ -147,6 +152,11 @@
 @media (max-width: 640px) {
   .modal-backdrop {
     padding: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .modal {
+    max-height: 92dvh;
   }
 
   .modal-layout {
@@ -155,8 +165,14 @@
     padding: 1rem 1.25rem 1.5rem;
   }
 
-  .modal-poster img {
-    aspect-ratio: 2 / 3;
+  .modal-poster {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .modal-close {
+    margin: 0.75rem;
   }
 
   .modal-title {

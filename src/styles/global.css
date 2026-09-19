@@ -46,8 +46,19 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 button {
   font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input {
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:focus-visible,
@@ -122,8 +133,12 @@ button:focus-visible {
 .navbar-toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
-  padding: 0.5rem;
+  padding: 0.7rem;
+  min-width: 44px;
+  min-height: 44px;
   background: none;
   border: none;
   cursor: pointer;
@@ -137,6 +152,18 @@ button:focus-visible {
   transition: transform var(--transition), opacity var(--transition);
 }
 
+.navbar-toggle[aria-expanded='true'] .navbar-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle[aria-expanded='true'] .navbar-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle[aria-expanded='true'] .navbar-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .btn {
   display: inline-block;
   padding: 0.85rem 1.75rem;
@@ -147,10 +174,6 @@ button:focus-visible {
   cursor: pointer;
   transition: background-color var(--transition), color var(--transition),
     border-color var(--transition), transform var(--transition);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -178,6 +201,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 73px);
+  min-height: calc(100dvh - 73px);
   padding: 4rem 2rem;
   text-align: center;
   background:
@@ -260,6 +284,12 @@ button:focus-visible {
   color: var(--color-text-muted);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap;
@@ -292,11 +322,26 @@ button:focus-visible {
 
   .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 5rem 1.5rem;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

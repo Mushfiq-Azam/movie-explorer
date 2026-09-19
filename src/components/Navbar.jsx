@@ -15,6 +15,7 @@ function Navbar() {
         className="navbar-toggle"
         aria-label="Toggle navigation menu"
         aria-expanded={menuOpen}
+        aria-controls="navbar-collapse"
         onClick={() => setMenuOpen((open) => !open)}
       >
         <span className="navbar-toggle-bar" />
@@ -22,7 +23,7 @@ function Navbar() {
         <span className="navbar-toggle-bar" />
       </button>
 
-      <div className={`navbar-collapse ${menuOpen ? 'open' : ''}`}>
+      <div className={`navbar-collapse ${menuOpen ? 'open' : ''}`} id="navbar-collapse">
         <ul className="navbar-links">
           <li>
             <Link to="/" onClick={() => setMenuOpen(false)}>
