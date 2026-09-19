@@ -1,0 +1,1 @@
+export const TVMAZE_API_URL = 'https://api.tvmaze.com'
